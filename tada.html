@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2nd Anniversary</title>
+    <!-- Font Awesome Icons (free) -->
+    <link rel="stylesheet" href="tada.css">
+</head>
+<body>
+
+<!-- Giant bat symbol in background -->
+<div class="bat-symbol-bg">🦇</div>
+
+<!-- floating bat decorations -->
+<div class="bat-deco b1">🦇</div>
+<div class="bat-deco b2">🦇</div>
+<div class="bat-deco b3">🦇</div>
+<div class="bat-deco b4">🦇</div>
+
+<div class="card" id="appCard">
+    <!-- line accents -->
+    <div class="line-accent l1"></div>
+    <div class="line-accent l2"></div>
+
+    <!-- ===== HEADER ===== -->
+    <div class="greeting">
+        <span>💕 2 years</span> · with you
+    </div>
+    <div class="subhead" id="subheadText"> password ✦</div>
+
+    <!-- ========== LOGIN VIEW ========== -->
+    <div id="loginView">
+        <div class="input-group">
+            <i class="fas fa-key"></i>
+            <input type="password" id="passwordInput" placeholder="our special code" maxlength="20" autocomplete="off">
+            <button class="toggle-vis" id="togglePasswordBtn" aria-label="Toggle password visibility">
+                <i class="fas fa-eye"></i>
+            </button>
+        </div>
+
+        <div id="errorMessage" class="error-msg hidden">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText">Incorrect. Try again, bal.</span>
+        </div>
+
+        <button class="btn-primary" id="loginBtn">
+            <i class="fas fa-arrow-right-to-bracket"></i> Enter
+        </button>
+
+        <div style="margin-top: 1.2rem; text-align: center; color: rgba(200, 200, 210, 0.15); font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px; font-style: italic;">
+            <i class="fas fa-heart"></i> Date today
+        </div>
+    </div>
+
+    <!-- ========== MAZE PAGE ========== -->
+    <div id="mazePage" class="maze-page">
+        <div class="maze-page-content">
+            <h2>Find Your Way</h2>
+            <div class="maze-sub">❤️ Reach the heart to win ❤️</div>
+
+            <div class="maze-wrapper">
+                <div class="canvas-container">
+                    <canvas id="mazeCanvas" width="400" height="400"></canvas>
+                </div>
+                <div class="maze-info">
+                    <div class="maze-status" id="mazeStatus">find the heart</div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span style="font-size: 0.7rem; color: rgba(200, 200, 210, 0.15);"></span>
+                        <button class="maze-reset-btn" id="mazeResetBtn">↻ new maze</button>
+                    </div>
+                </div>
+
+                <div class="arrow-buttons">
+                    <div class="arrow-row">
+                        <button class="arrow-btn" data-dir="up">⬆</button>
+                    </div>
+                    <div class="arrow-row">
+                        <button class="arrow-btn" data-dir="left">⬅</button>
+                        <button class="arrow-btn" data-dir="down">⬇</button>
+                        <button class="arrow-btn" data-dir="right">➡</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="back-btn" id="mazeToDashboardBtn">
+                <i class="fas fa-arrow-left"></i> See photos
+            </button>
+        </div>
+    </div>
+
+    <!-- ========== DASHBOARD ========== -->
+    <div id="dashboardView" class="dashboard">
+        <div class="dash-header">
+            <h2><i class="fas fa-heart"></i> My Special Someone</h2>
+            <span class="badge">2 years</span>
+        </div>
+
+        <div class="scrapbook-grid">
+            <div class="photo-card" data-index="0">
+                <img src="envy.jpg" alt="Placeholder 1" id="img1">
+                <div class="caption">📸</div>
+                <div class="replace-hint">(click to open)</div>
+            </div>
+            <div class="photo-card" data-index="1">
+                <img src="download (10).jpg" alt="Placeholder 2" id="img2">
+                <div class="caption">🎀</div>
+                <div class="replace-hint">(click to open)</div>
+            </div>
+            <div class="photo-card" data-index="2">
+                <img src="download (11).jpg" alt="Placeholder 3" id="img3">
+                <div class="caption">💟</div>
+                <div class="replace-hint">(click to open)</div>
+            </div>
+            <div class="photo-card" data-index="3">
+                <img src="download (12).jpg" alt="Placeholder 4" id="img4">
+                <div class="caption">💕 </div>
+                <div class="replace-hint">(click to open)</div>
+            </div>
+        </div>
+
+        <div class="heart-btn-wrapper">
+            <button class="heart-btn" id="messageHeartBtn" aria-label="Go to message">
+                <svg class="empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+                    <path fill="none" d="M0 0H24V24H0z"></path>
+                    <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604c.881-.556 1.676-1.109 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5 5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903.745.592 1.54 1.145 2.421 1.7.299.189.595.37.934.572.339-.202.635-.383.934-.571z"></path>
+                </svg>
+                <svg class="filled" height="32" width="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H24V24H0z" fill="none"></path>
+                    <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="heart-label">click for my message</div>
+
+        <button class="back-btn" style="margin-top: 1rem; width: 100%;" id="dashToMazeBtn">
+            <i class="fas fa-gamepad"></i> Play the maze again
+        </button>
+    </div>
+
+    <!-- ========== MESSAGE PAGE ========== -->
+    <div id="messagePage" class="message-page">
+        <div class="message-content">
+            <div class="heart-icon">💖</div>
+            <h2>Happy 2nd Anniversary</h2>
+            <p>Hi bal,</p>
+            <p>Happy happy 2nd anniversary satin, grabe no sobrang tagal na natin and we still counting. I'm so happy na nakilala kita you're my everything bal</p>
+            <p>I want to say sorry for being a bad partner sayo bal and also thank you kasi you still want me kahit ang dami ko pong kamalian sayo.</p>
+            <p>I hope malagpasan natin lahat ng obstacle and mas lumago and mas mag grow pa tayo bal. again happy 2nd anniversary</p>
+            <p>I always appreciate your love bal and I always love you.</p>
+            <p>You will always have me and I always loved you. I love you most, always, and forever</p>
+            <p style="font-weight: 400; color: #ffd24a;">❤️ Your kira😘 ❤️</p>
+            <button class="back-btn" id="backToDashFromMsg">
+                <i class="fas fa-arrow-left"></i> Back to photos
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- ========== PHOTO DETAIL MODAL ========== -->
+<div class="photo-modal" id="photoModal">
+    <div class="photo-modal-content">
+        <button class="photo-modal-close" id="modalClose">&times;</button>
+        <img id="modalImage" src="" alt="Photo">
+        <div class="modal-title" id="modalTitle">Memory</div>
+        <div class="modal-message" id="modalMessage">A beautiful moment we shared together.</div>
+    </div>
+</div>
+
+<!-- ========== CELEBRATION OVERLAY ========== -->
+<div class="celebration-overlay" id="celebrationOverlay">
+    <div class="celebration-card">
+        <h1>💖 HAPPY 2ND ANNIVERSARY 💖</h1>
+        <div class="sub">✦ I'm so proud of you Bal ✦</div>
+        <span class="emoji-big">🦇💕🎉</span>
+        <button class="close-celebr" id="closeCelebration">❤️ keep playing</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---- PAGE NAVIGATION ----
+        const loginView = document.getElementById('loginView');
+        const dashboardView = document.getElementById('dashboardView');
+        const messagePage = document.getElementById('messagePage');
+        const mazePage = document.getElementById('mazePage');
+        const passwordInput = document.getElementById('passwordInput');
+        const loginBtn = document.getElementById('loginBtn');
+        const messageHeartBtn = document.getElementById('messageHeartBtn');
+        const backToDashFromMsg = document.getElementById('backToDashFromMsg');
+        const mazeToDashboardBtn = document.getElementById('mazeToDashboardBtn');
+        const dashToMazeBtn = document.getElementById('dashToMazeBtn');
+        const errorMsg = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const toggleBtn = document.getElementById('togglePasswordBtn');
+        const subheadText = document.getElementById('subheadText');
+
+        // Photo Modal
+        const photoModal = document.getElementById('photoModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalClose = document.getElementById('modalClose');
+
+        const VALID_PASSWORDS = ['October 08,2026'];
+
+        // ---- PHOTO DATA ----
+        const photoData = [
+            {
+                image: 'pic1.jpg',
+                title: '✨',
+                message: 'Ang ganda mo dito bal bagay na bagay sayo yung uniform mo 💕'
+            },
+            {
+                image: 'pic2.jpg',
+                title: '🌸',
+                message: 'Our photo na mag kasama sana sa susunod hindi na sya ai. 🎉'
+            },
+            {
+                image: 'pic3.jpg',
+                title: '☀️',
+                message: 'Poganda mo talaga bal'
+            },
+            {
+                image: 'pic4.jpg',
+                title: '💫',
+                message: 'Soon real na this and sa photoboot tayo mag pipic together 🌟'
+            }
+        ];
+
+        function showError(message) {
+            errorText.textContent = message || 'Incorrect. Try again, Bal.';
+            errorMsg.classList.remove('hidden');
+            errorMsg.style.animation = 'none';
+            setTimeout(() => errorMsg.style.animation = 'shakeError 0.4s ease', 10);
+        }
+
+        function hideError() {
+            errorMsg.classList.add('hidden');
+        }
+
+        function unlockDashboard() {
+            loginView.classList.add('hidden');
+            
+            mazePage.classList.add('active');
+            mazePage.style.display = 'block';
+            dashboardView.classList.remove('active');
+            dashboardView.style.display = 'none';
+            messagePage.classList.remove('active');
+            messagePage.style.display = 'none';
+            subheadText.textContent = '💖 for you, always';
+            hideError();
+            passwordInput.value = '';
+            setTimeout(initMaze, 100);
+        }
+
+        function showDashboard() {
+            mazePage.classList.remove('active');
+            mazePage.style.display = 'none';
+            dashboardView.classList.add('active');
+            dashboardView.style.display = 'block';
+            messagePage.classList.remove('active');
+            messagePage.style.display = 'none';
+        }
+
+        function showMessagePage() {
+            mazePage.classList.remove('active');
+            mazePage.style.display = 'none';
+            dashboardView.classList.remove('active');
+            dashboardView.style.display = 'none';
+            messagePage.classList.add('active');
+            messagePage.style.display = 'block';
+        }
+
+        function showMazePage() {
+            dashboardView.classList.remove('active');
+            dashboardView.style.display = 'none';
+            messagePage.classList.remove('active');
+            messagePage.style.display = 'none';
+            mazePage.classList.add('active');
+            mazePage.style.display = 'block';
+            setTimeout(initMaze, 100);
+        }
+
+        function lockDashboard() {
+            loginView.classList.remove('hidden');
+            mazePage.classList.remove('active');
+            mazePage.style.display = 'none';
+            dashboardView.classList.remove('active');
+            dashboardView.style.display = 'none';
+            messagePage.classList.remove('active');
+            messagePage.style.display = 'none';
+            subheadText.textContent = 'enter password ✦';
+            hideError();
+            passwordInput.value = '';
+            passwordInput.focus();
+        }
+
+        function attemptLogin() {
+            const entered = passwordInput.value.trim();
+            if (entered === '') {
+                showError('Please enter password.');
+                return;
+            }
+            const isValid = VALID_PASSWORDS.some(pwd => pwd === entered);
+            if (isValid) {
+                hideError();
+                unlockDashboard();
+            } else {
+                showError('Incorrect password. Try again, Bal.');
+                passwordInput.style.borderColor = 'rgba(255, 200, 60, 0.3)';
+                setTimeout(() => passwordInput.style.borderColor = '', 400);
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+        // Login events
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            attemptLogin();
+        });
+
+        passwordInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                attemptLogin();
+            }
+        });
+
+        // Navigation events
+        messageHeartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showMessagePage();
+        });
+
+        backToDashFromMsg.addEventListener('click', function(e) {
+            e.preventDefault();
+            showDashboard();
+        });
+
+        mazeToDashboardBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showDashboard();
+        });
+
+        dashToMazeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showMazePage();
+        });
+
+        toggleBtn.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            const icon = toggleBtn.querySelector('i');
+            icon.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+        });
+
+        // ---- PHOTO MODAL ----
+        function openPhotoModal(index) {
+            const data = photoData[index];
+            if (data) {
+                modalImage.src = data.image;
+                modalTitle.textContent = data.title;
+                modalMessage.textContent = data.message;
+                photoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closePhotoModal() {
+            photoModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.photo-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                openPhotoModal(index);
+            });
+        });
+
+        modalClose.addEventListener('click', closePhotoModal);
+        photoModal.addEventListener('click', function(e) {
+            if (e.target === this) closePhotoModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePhotoModal();
+        });
+
+        document.querySelector('.greeting').addEventListener('dblclick', function() {
+            if (dashboardView.classList.contains('active') || messagePage.classList.contains('active') || 
+                mazePage.classList.contains('active')) {
+                lockDashboard();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (dashboardView.classList.contains('active') || messagePage.classList.contains('active') || 
+                    mazePage.classList.contains('active')) {
+                    lockDashboard();
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!loginView.classList.contains('hidden')) {
+                passwordInput.focus();
+            }
+        });
+
+        // ===== MAZE GAME =====
+        let mazeInitialized = false;
+        let playerRow = 1;
+        let playerCol = 1;
+        let gameWon = false;
+        let maze = [];
+        let mazeCanvas, ctx, mazeStatus;
+
+        const playerImg = new Image();
+        const goalImg = new Image();
+        let imagesLoaded = 0;
+        const totalImages = 2;
+
+        playerImg.src = 'Batman__1_-removebg-preview.png';
+        goalImg.src = 'Red_pixel_heart-removebg-preview.png';
+
+        playerImg.onload = () => { imagesLoaded++; if (imagesLoaded === totalImages) initMaze(); };
+        goalImg.onload = () => { imagesLoaded++; if (imagesLoaded === totalImages) initMaze(); };
+
+        setTimeout(() => {
+            if (imagesLoaded < totalImages) {
+                initMaze();
+            }
+        }, 3000);
+
+        const SIZE = 10;
+        const CELL_SIZE = 40;
+
+        function generateRandomMaze() {
+            const newMaze = Array(SIZE).fill(null).map(() => Array(SIZE).fill(1));
+            
+            function carve(x, y) {
+                newMaze[y][x] = 0;
+                const directions = [[0, -1], [0, 1], [-1, 0], [1, 0]];
+                for (let i = directions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [directions[i], directions[j]] = [directions[j], directions[i]];
+                }
+                
+                for (const [dx, dy] of directions) {
+                    const nx = x + dx * 2;
+                    const ny = y + dy * 2;
+                    if (nx >= 0 && nx < SIZE && ny >= 0 && ny < SIZE && newMaze[ny][nx] === 1) {
+                        newMaze[y + dy][x + dx] = 0;
+                        carve(nx, ny);
+                    }
+                }
+            }
+            
+            carve(1, 1);
+            
+            let goalX, goalY;
+            let attempts = 0;
+            do {
+                goalX = 1 + Math.floor(Math.random() * (SIZE - 2));
+                goalY = 1 + Math.floor(Math.random() * (SIZE - 2));
+                attempts++;
+            } while ((goalX === 1 && goalY === 1) && attempts < 50);
+            
+            newMaze[goalY][goalX] = 2;
+            newMaze[1][1] = 0;
+            
+            return newMaze;
+        }
+
+        function copyMaze(template) {
+            return template.map(row => [...row]);
+        }
+
+        function initMaze() {
+            mazeCanvas = document.getElementById('mazeCanvas');
+            if (!mazeCanvas) return;
+            ctx = mazeCanvas.getContext('2d');
+            mazeStatus = document.getElementById('mazeStatus');
+            
+            maze = generateRandomMaze();
+            playerRow = 1;
+            playerCol = 1;
+            gameWon = false;
+            
+            drawMaze();
+            setupMazeButtons();
+            mazeInitialized = true;
+        }
+
+        function drawMaze() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, 400, 400);
+
+            for (let r = 0; r < SIZE; r++) {
+                for (let c = 0; c < SIZE; c++) {
+                    const val = maze[r][c];
+                    const x = c * CELL_SIZE;
+                    const y = r * CELL_SIZE;
+
+                    if (val === 1) {
+                        // Batman themed walls - dark with yellow hints
+                        const grad = ctx.createRadialGradient(x+8, y+8, 4, x+20, y+20, 25);
+                        grad.addColorStop(0, 'rgba(35, 35, 45, 0.7)');
+                        grad.addColorStop(1, 'rgba(15, 15, 22, 0.9)');
+                        ctx.fillStyle = grad;
+                        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+                        ctx.shadowBlur = 8;
+                        ctx.beginPath();
+                        roundRect(ctx, x, y, CELL_SIZE, CELL_SIZE, 10);
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                        ctx.strokeStyle = 'rgba(255, 200, 60, 0.06)';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        roundRect(ctx, x+0.5, y+0.5, CELL_SIZE-1, CELL_SIZE-1, 10);
+                        ctx.stroke();
+                    } else if (val === 2) {
+                        // GOAL - heart
+                        const cx = x + CELL_SIZE/2;
+                        const cy = y + CELL_SIZE/2;
+                        
+                        if (goalImg.complete && goalImg.naturalWidth > 0) {
+                            ctx.save();
+                            ctx.shadowColor = 'rgba(255, 200, 60, 0.4)';
+                            ctx.shadowBlur = 30;
+                            ctx.beginPath();
+                            ctx.arc(cx, cy, 18, 0, 2*Math.PI);
+                            ctx.clip();
+                            ctx.drawImage(goalImg, x+4, y+4, CELL_SIZE-8, CELL_SIZE-8);
+                            ctx.restore();
+                        } else {
+                            ctx.shadowColor = 'rgba(255, 200, 60, 0.3)';
+                            ctx.shadowBlur = 30;
+                            ctx.font = '28px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'middle';
+                            ctx.fillText('❤️', cx, cy+2);
+                            ctx.shadowBlur = 0;
+                        }
+                    } else {
+                        // PATH
+                        ctx.fillStyle = 'rgba(15, 15, 22, 0.4)';
+                        ctx.shadowBlur = 0;
+                        ctx.beginPath();
+                        roundRect(ctx, x, y, CELL_SIZE, CELL_SIZE, 8);
+                        ctx.fill();
+                        ctx.strokeStyle = 'rgba(255, 200, 60, 0.03)';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        roundRect(ctx, x+0.5, y+0.5, CELL_SIZE-1, CELL_SIZE-1, 8);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Draw PLAYER
+            const px = playerCol * CELL_SIZE + 6;
+            const py = playerRow * CELL_SIZE + 6;
+            const pSize = CELL_SIZE - 12;
+
+            if (playerImg.complete && playerImg.naturalWidth > 0) {
+                ctx.save();
+                ctx.shadowColor = 'rgba(255, 200, 60, 0.20)';
+                ctx.shadowBlur = 20;
+                ctx.beginPath();
+                ctx.arc(px + pSize/2, py + pSize/2, pSize/2, 0, 2*Math.PI);
+                ctx.clip();
+                ctx.drawImage(playerImg, px, py, pSize, pSize);
+                ctx.restore();
+            } else {
+                ctx.shadowColor = 'rgba(255, 200, 60, 0.20)';
+                ctx.shadowBlur = 20;
+                ctx.font = '24px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🌟', px + pSize/2, py + pSize/2 + 1);
+                ctx.shadowBlur = 0;
+            }
+
+            if (mazeStatus) {
+                if (gameWon) {
+                    mazeStatus.textContent = '🎉 You Did It!🎉';
+                    mazeStatus.classList.add('win');
+                } else {
+                    mazeStatus.textContent = 'Catch the Heart';
+                    mazeStatus.classList.remove('win');
+                }
+            }
+        }
+
+        function roundRect(ctx, x, y, w, h, r) {
+            if (w < 2 * r) r = w / 2;
+            if (h < 2 * r) r = h / 2;
+            ctx.moveTo(x + r, y);
+            ctx.lineTo(x + w - r, y);
+            ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+            ctx.lineTo(x + w, y + h - r);
+            ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+            ctx.lineTo(x + r, y + h);
+            ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+            ctx.lineTo(x, y + r);
+            ctx.quadraticCurveTo(x, y, x + r, y);
+            ctx.closePath();
+            return ctx;
+        }
+
+        const celebrationOverlay = document.getElementById('celebrationOverlay');
+        const closeCelebrationBtn = document.getElementById('closeCelebration');
+
+        function showCelebration() {
+            celebrationOverlay.classList.add('show');
+        }
+
+        function hideCelebration() {
+            celebrationOverlay.classList.remove('show');
+        }
+
+        closeCelebrationBtn.addEventListener('click', hideCelebration);
+
+        function tryMove(dRow, dCol) {
+            if (gameWon) return false;
+            const newRow = playerRow + dRow;
+            const newCol = playerCol + dCol;
+            if (newRow < 0 || newRow >= SIZE || newCol < 0 || newCol >= SIZE) return false;
+            const cell = maze[newRow][newCol];
+            if (cell === 1) return false;
+            playerRow = newRow;
+            playerCol = newCol;
+            
+            mazeCanvas.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                mazeCanvas.style.transform = 'scale(1)';
+            }, 100);
+            
+            drawMaze();
+            if (cell === 2) {
+                gameWon = true;
+                drawMaze();
+                setTimeout(showCelebration, 300);
+                return true;
+            }
+            return true;
+        }
+
+        function resetMaze() {
+            mazeCanvas.style.transform = 'scale(0.9) rotate(-2deg)';
+            mazeCanvas.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                maze = generateRandomMaze();
+                playerRow = 1;
+                playerCol = 1;
+                gameWon = false;
+                hideCelebration();
+                
+                mazeCanvas.style.transform = 'scale(0.9) rotate(2deg)';
+                mazeCanvas.style.opacity = '0.5';
+                drawMaze();
+                
+                setTimeout(() => {
+                    mazeCanvas.style.transform = 'scale(1) rotate(0deg)';
+                    mazeCanvas.style.opacity = '1';
+                }, 300);
+            }, 300);
+            
+            if (mazeStatus) {
+                mazeStatus.classList.remove('win');
+                mazeStatus.textContent = 'find the heart';
+            }
+        }
+
+        function setupMazeButtons() {
+            const resetBtn = document.getElementById('mazeResetBtn');
+            if (resetBtn) {
+                resetBtn.removeEventListener('click', resetMaze);
+                resetBtn.addEventListener('click', resetMaze);
+            }
+
+            const arrowBtns = document.querySelectorAll('#mazePage .arrow-btn');
+            arrowBtns.forEach(btn => {
+                btn.removeEventListener('click', handleArrowClick);
+                btn.removeEventListener('touchstart', handleArrowTouch);
+                btn.addEventListener('click', handleArrowClick);
+                btn.addEventListener('touchstart', handleArrowTouch, { passive: false });
+            });
+
+            document.removeEventListener('keydown', mazeKeyHandler);
+            document.addEventListener('keydown', mazeKeyHandler);
+        }
+
+        function handleArrowClick(e) {
+            e.preventDefault();
+            if (gameWon) return;
+            const dir = this.dataset.dir;
+            switch (dir) {
+                case 'up': tryMove(-1, 0); break;
+                case 'down': tryMove(1, 0); break;
+                case 'left': tryMove(0, -1); break;
+                case 'right': tryMove(0, 1); break;
+            }
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        function handleArrowTouch(e) {
+            e.preventDefault();
+            if (gameWon) return;
+            const dir = this.dataset.dir;
+            switch (dir) {
+                case 'up': tryMove(-1, 0); break;
+                case 'down': tryMove(1, 0); break;
+                case 'left': tryMove(0, -1); break;
+                case 'right': tryMove(0, 1); break;
+            }
+        }
+
+        function mazeKeyHandler(e) {
+            const key = e.key;
+            const moveKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'W', 'a', 'A', 's', 'S', 'd', 'D'];
+            if (moveKeys.includes(key)) {
+                e.preventDefault();
+            }
+            if (gameWon) return;
+            if (!mazePage.classList.contains('active')) return;
+            switch (key) {
+                case 'ArrowUp': case 'w': case 'W': tryMove(-1, 0); break;
+                case 'ArrowDown': case 's': case 'S': tryMove(1, 0); break;
+                case 'ArrowLeft': case 'a': case 'A': tryMove(0, -1); break;
+                case 'ArrowRight': case 'd': case 'D': tryMove(0, 1); break;
+                default: return;
+            }
+        }
+
+        setTimeout(() => {
+            if (!mazeInitialized) {
+                initMaze();
+            }
+        }, 500);
+
+        console.log('🦇 Batman Anniversary Edition ready!');
+        console.log('💖 Valid passwords: October 08,2026');
+        console.log('📸 Click on any photo to see a special message!');
+        console.log('🔄 Click "new maze" for a different layout each time!');
+    })();
+</script>
+</body>
+</html>
